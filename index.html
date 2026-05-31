@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGOSFORGE — A Narrative Operating System</title>
+<meta name="description" content="Logosforge is a narrative operating system for structured writing. It forges writing, structure, and AI into a single terminal for novelists, screenwriters and narrative designers.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="LOGOSFORGE — A Narrative Operating System">
+<meta property="og:description" content="Writing, structure, and AI — forged into one terminal. Novel, Screenplay, Graphic Novel and Series engines with an inline AI co-writer.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=Share+Tech+Mono&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ════════════════ GLOBAL HUD STATUS BAR ════════════════ -->
+<div class="hud-bar" id="hudBar">
+  <div class="hud-bar__inner">
+    <div class="hud-bar__group">
+      <span class="dot dot--live"></span>
+      <span class="hud-bar__label">SYSTEM</span>
+      <span class="hud-bar__val" id="sysStatus">ONLINE</span>
+      <span class="hud-bar__sep">/</span>
+      <span class="hud-bar__label">NARRATIVE OS</span>
+    </div>
+    <div class="hud-bar__group hud-bar__group--center">
+      <span class="hud-bar__jp">ロゴスフォージ</span>
+    </div>
+    <div class="hud-bar__group hud-bar__group--right">
+      <span class="hud-bar__label">MAGI-LINK</span>
+      <span class="hud-bar__val hud-bar__val--amber">STABLE</span>
+      <span class="hud-bar__sep">/</span>
+      <span class="hud-bar__val" id="clock">0000.00.00&nbsp;00:00:00</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PRIMARY NAVIGATION ════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="brand" aria-label="Logosforge home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" class="emblem"><use href="#emblem"/></svg>
+      </span>
+      <span class="brand__name">LOGOSFORGE</span>
+      <span class="brand__tag">NARRATIVE&nbsp;OS</span>
+    </a>
+
+    <nav class="menu" id="menu" aria-label="Primary">
+      <ul class="menu__list">
+        <li class="menu__item has-sub">
+          <button class="menu__link" aria-expanded="false" aria-haspopup="true">Products <i class="caret"></i></button>
+          <div class="submenu">
+            <div class="submenu__head">PRODUCTS <span>製品</span></div>
+            <a class="submenu__link" href="#downloads">
+              <span class="submenu__k">Desktop</span>
+              <span class="submenu__v">Windows · macOS · Linux → Download</span>
+            </a>
+            <a class="submenu__link" href="#downloads">
+              <span class="submenu__k">Web</span>
+              <span class="submenu__v">PC · iOS · Android</span>
+            </a>
+          </div>
+        </li>
+        <li class="menu__item has-sub">
+          <button class="menu__link" aria-expanded="false" aria-haspopup="true">Pricing <i class="caret"></i></button>
+          <div class="submenu">
+            <div class="submenu__head">PRICING <span>価格</span></div>
+            <a class="submenu__link" href="#pricing">
+              <span class="submenu__k">Free</span>
+              <span class="submenu__v">Whiteboard only · 0€</span>
+            </a>
+            <a class="submenu__link" href="#pricing">
+              <span class="submenu__k">Pro license</span>
+              <span class="submenu__v">Complete · 99€</span>
+            </a>
+          </div>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="#about">About</a>
+        </li>
+        <li class="menu__item has-sub">
+          <button class="menu__link" aria-expanded="false" aria-haspopup="true">Help <i class="caret"></i></button>
+          <div class="submenu">
+            <div class="submenu__head">HELP <span>支援</span></div>
+            <a class="submenu__link" href="https://discord.gg/logosforge" target="_blank" rel="noopener">
+              <span class="submenu__k">Support</span>
+              <span class="submenu__v">Community help → Discord</span>
+            </a>
+            <a class="submenu__link" href="https://github.com/fopearcano/storyplanner/tree/main/docs" target="_blank" rel="noopener">
+              <span class="submenu__k">Documentation</span>
+              <span class="submenu__v">Official docs &amp; API</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#downloads" class="btn btn--ghost nav__cta">
+        <span class="btn__bracket">[</span>DEPLOY<span class="btn__bracket">]</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero__grid" aria-hidden="true"></div>
+
+    <!-- side rulers -->
+    <div class="vrail vrail--left" aria-hidden="true">
+      <span>SECTION&nbsp;00</span><span class="vrail__dim">INDEX</span>
+    </div>
+    <div class="vrail vrail--right" aria-hidden="true">
+      <span>新世紀</span><span class="vrail__dim">創作</span>
+    </div>
+
+    <div class="hero__top container">
+      <div class="hero__code">
+        <span class="tick-row" aria-hidden="true"></span>
+        <span class="mono dim">00 — INDEX</span>
+      </div>
+      <div class="hero__boot mono">
+        <span class="dot dot--live"></span>
+        <span id="bootLine">INITIALIZING FORGE CORE</span><span class="cursor">_</span>
+      </div>
+    </div>
+
+    <!-- FULL-BLEED WORDMARK -->
+    <div class="wordmark-wrap" aria-hidden="false">
+      <span class="wordmark-tag wordmark-tag--l mono">言葉を鍛造する</span>
+      <span class="wordmark-tag wordmark-tag--r mono">VER 1.0 // FORGE</span>
+      <svg class="wordmark" viewBox="0 0 780 116" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LOGOSFORGE">
+        <text x="390" y="99" text-anchor="middle" textLength="762" lengthAdjust="spacingAndGlyphs">LOGOSFORGE</text>
+      </svg>
+    </div>
+
+    <div class="hero__body container">
+      <p class="hero__lead">
+        A <strong>narrative operating system</strong> for structured writing.
+      </p>
+      <p class="hero__sub">
+        Writing, structure, and AI — forged into one terminal. For novelists,
+        screenwriters and narrative designers who refuse to choose between
+        prose, planning and intelligence.
+      </p>
+      <div class="hero__cta">
+        <a href="#downloads" class="btn btn--solid">
+          <span class="btn__bracket">[</span>DEPLOY DESKTOP<span class="btn__bracket">]</span>
+        </a>
+        <a href="#downloads" class="btn btn--ghost">
+          <span class="btn__bracket">[</span>LAUNCH WEB<span class="btn__bracket">]</span>
+        </a>
+      </div>
+
+      <div class="hero__meta">
+        <div class="meta-cell">
+          <span class="meta-cell__k mono">ENGINES</span>
+          <span class="meta-cell__v" data-count="5">5</span>
+        </div>
+        <div class="meta-cell">
+          <span class="meta-cell__k mono">PLATFORMS</span>
+          <span class="meta-cell__v">WIN·MAC·LINUX·WEB</span>
+        </div>
+        <div class="meta-cell">
+          <span class="meta-cell__k mono">AI</span>
+          <span class="meta-cell__v">LOCAL / CLOUD</span>
+        </div>
+        <div class="meta-cell">
+          <span class="meta-cell__k mono">SYNC RATIO</span>
+          <span class="meta-cell__v"><span data-count="400">400</span>.0%</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#features" class="scroll-cue mono" aria-label="Scroll to features">
+      <span>SCROLL</span>
+      <span class="scroll-cue__line"></span>
+    </a>
+  </section>
+
+  <!-- ════════════════ MAIN FEATURES ════════════════ -->
+  <section class="section features" id="features">
+    <div class="container">
+      <header class="sec-head">
+        <div class="sec-head__tag">
+          <span class="sec-head__num mono">SECTION 01</span>
+          <span class="sec-head__line"></span>
+          <span class="sec-head__jp mono">主要機能</span>
+        </div>
+        <h2 class="sec-head__title">MAIN FEATURES</h2>
+        <p class="sec-head__intro">
+          Traditional editors obsess over prose. Planners obsess over structure.
+          AI tools obsess over text generation. Logosforge runs all three on one
+          core — engine-aware, context-aware, and built to keep you in flow.
+        </p>
+      </header>
+
+      <div class="feat-grid">
+        <article class="panel feat" style="--i:0">
+          <span class="panel__index mono">00</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-ai"/></svg>
+          </div>
+          <h3 class="feat__title">Inline AI Assistant</h3>
+          <p class="feat__desc">A context-aware co-writer embedded in the page. Engine-aware critique, rewrites and ideation — invoked inline, never in a sidebar exile.</p>
+          <span class="feat__meta mono">CONTEXTUAL · ENGINE-AWARE</span>
+        </article>
+
+        <article class="panel feat" style="--i:1">
+          <span class="panel__index mono">01</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-edit"/></svg>
+          </div>
+          <h3 class="feat__title">Manuscript Editor</h3>
+          <p class="feat__desc">A distraction-free surface with format-aware blocks. Write screenplay, prose or panels — the editor adapts its grammar to the engine you chose.</p>
+          <span class="feat__meta mono">DISTRACTION-FREE · BLOCKS</span>
+        </article>
+
+        <article class="panel feat" style="--i:2">
+          <span class="panel__index mono">02</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-structure"/></svg>
+          </div>
+          <h3 class="feat__title">Structure Tools</h3>
+          <p class="feat__desc">AI-generated outlines, Story Grid analysis and timelines. See act turns, beats and pacing as a living instrument panel — not a static document.</p>
+          <span class="feat__meta mono">OUTLINE · STORY GRID · TIMELINE</span>
+        </article>
+
+        <article class="panel feat" style="--i:3">
+          <span class="panel__index mono">03</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-bible"/></svg>
+          </div>
+          <h3 class="feat__title">Story Bible</h3>
+          <p class="feat__desc">Characters, places, themes and lore — tracked, linked and surfaced to the AI as canon. Continuity stops being something you hold in your head.</p>
+          <span class="feat__meta mono">CHARACTERS · PLACES · LORE</span>
+        </article>
+
+        <article class="panel feat" style="--i:4">
+          <span class="panel__index mono">04</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-graph"/></svg>
+          </div>
+          <h3 class="feat__title">Graph Visualization</h3>
+          <p class="feat__desc">Motifs, characters and causality rendered as a node graph. Trace why a scene exists and what breaks if you cut it — a psychograph for your plot.</p>
+          <span class="feat__meta mono">MOTIF · CHARACTER · CAUSALITY</span>
+        </article>
+
+        <article class="panel feat" style="--i:5">
+          <span class="panel__index mono">05</span>
+          <div class="feat__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#ic-core"/></svg>
+          </div>
+          <h3 class="feat__title">Local or Cloud AI</h3>
+          <p class="feat__desc">Bring your own model via any OpenAI-compatible endpoint. Run it on your machine or in the cloud — your keys, your manuscript, your data.</p>
+          <span class="feat__meta mono">OPENAI-COMPATIBLE · BYO-KEY</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ WRITING MODES ════════════════ -->
+  <section class="section modes" id="modes">
+    <div class="container">
+      <header class="sec-head">
+        <div class="sec-head__tag">
+          <span class="sec-head__num mono">SECTION 02</span>
+          <span class="sec-head__line"></span>
+          <span class="sec-head__jp mono">執筆エンジン</span>
+        </div>
+        <h2 class="sec-head__title">WRITING MODES</h2>
+        <p class="sec-head__intro">
+          Select a narrative engine per project. It reshapes how Logosforge
+          organizes everything — hierarchy, blocks, export and the way the AI
+          reasons about your story.
+        </p>
+      </header>
+
+      <!-- FEATURED: SCREENPLAY -->
+      <article class="priority panel">
+        <div class="priority__rail" aria-hidden="true"></div>
+        <div class="priority__head">
+          <span class="warn-tri" aria-hidden="true">
+            <svg viewBox="0 0 40 36"><use href="#ic-warn"/></svg>
+          </span>
+          <div>
+            <span class="priority__flag mono">PRIORITY UNIT · 脚本</span>
+            <h3 class="priority__title">SCREENPLAY MODE</h3>
+          </div>
+          <span class="priority__id mono">ENGINE&nbsp;01</span>
+        </div>
+        <div class="priority__grid">
+          <div class="priority__copy">
+            <p class="priority__lead">
+              The market lacks a <strong>professional, AI-assisted screenplay app.</strong>
+              Logosforge fills that gap.
+            </p>
+            <p>
+              Acts, sequences, scenes and beats — industry-standard structure with
+              an AI that actually understands sluglines, action density and the
+              difference between a beat and a scene. Format-aware to the line.
+            </p>
+            <div class="priority__cta">
+              <a href="#downloads" class="btn btn--solid btn--sm">
+                <span class="btn__bracket">[</span>OPEN SCREENPLAY ENGINE<span class="btn__bracket">]</span>
+              </a>
+            </div>
+          </div>
+          <div class="priority__spec">
+            <div class="spec-row"><span class="mono dim">HIERARCHY</span><span>Acts / Sequences / Scenes / Beats</span></div>
+            <div class="spec-row"><span class="mono dim">FORMAT</span><span>Industry-standard, format-aware</span></div>
+            <div class="spec-row"><span class="mono dim">AI</span><span>Slugline &amp; beat-aware critique</span></div>
+            <div class="spec-row"><span class="mono dim">EXPORT</span><span>DOCX / Text</span></div>
+            <div class="spec-bar" aria-hidden="true">
+              <span class="spec-bar__fill"></span>
+              <span class="spec-bar__txt mono">MARKET DEMAND — CRITICAL</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- OTHER ENGINES -->
+      <div class="modes-grid">
+        <article class="panel mode" style="--i:0">
+          <span class="mode__id mono">ENGINE 02</span>
+          <h3 class="mode__title">NOVEL</h3>
+          <p class="mode__jp mono">小説</p>
+          <p class="mode__hier">Parts / Chapters / Scenes</p>
+          <p class="mode__desc">Long-form prose with chapter-level pacing, scene cards and a Story Bible that keeps a sprawling cast consistent.</p>
+        </article>
+        <article class="panel mode" style="--i:1">
+          <span class="mode__id mono">ENGINE 03</span>
+          <h3 class="mode__title">GRAPHIC NOVEL</h3>
+          <p class="mode__jp mono">漫画脚本</p>
+          <p class="mode__hier">Issues / Chapters / Pages / Panels</p>
+          <p class="mode__desc">Page-and-panel scripting with panel descriptions, dialogue balloons and per-page beat counts built for artists and letterers.</p>
+        </article>
+        <article class="panel mode" style="--i:2">
+          <span class="mode__id mono">ENGINE 04</span>
+          <h3 class="mode__title">SERIES</h3>
+          <p class="mode__jp mono">シリーズ</p>
+          <p class="mode__hier">Seasons / Episodes / A·B·C plots / Arcs</p>
+          <p class="mode__desc">Multi-season architecture with interleaved A/B/C plots and arc tracking across episodes — the writers' room, systematized.</p>
+        </article>
+        <article class="panel mode" style="--i:3">
+          <span class="mode__id mono">ENGINE 05</span>
+          <h3 class="mode__title">STAGE SCRIPT</h3>
+          <p class="mode__jp mono">戯曲</p>
+          <p class="mode__hier">Acts / Scenes / Beats / Entrances · Cues</p>
+          <p class="mode__desc">Theatre-native structure with entrances, exits and cue lines as first-class blocks for the stage and its directions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ ABOUT ════════════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__main">
+          <header class="sec-head sec-head--flush">
+            <div class="sec-head__tag">
+              <span class="sec-head__num mono">SECTION 03</span>
+              <span class="sec-head__line"></span>
+              <span class="sec-head__jp mono">概要</span>
+            </div>
+            <h2 class="sec-head__title">ABOUT</h2>
+          </header>
+          <p class="about__lead">
+            Logosforge began with a refusal. A refusal to keep three apps open —
+            one to write, one to plan, one to think — and to keep paying the tax
+            of moving between them.
+          </p>
+          <p class="about__p">
+            It is built as a <strong>narrative operating system</strong>: a single
+            core where the manuscript, its structure and an engine-aware AI share
+            the same memory of your story. Choose your engine and the whole system
+            reconfigures around it. The AI doesn't guess what you're writing — it
+            knows, because it reads from the same Story Bible you do.
+          </p>
+          <p class="about__p">
+            Under the hood it's Python, Qt and a React surface over a local-first
+            FastAPI core, with AI that runs on your own keys — local or cloud. No
+            lock-in. No surveillance of your manuscript. Just the forge.
+          </p>
+        </div>
+        <aside class="about__side" aria-hidden="true">
+          <div class="magi">
+            <svg viewBox="0 0 220 200" class="magi__svg"><use href="#magi"/></svg>
+            <div class="magi__cap mono">MAGI — TRIPLE-CORE CRITIQUE</div>
+          </div>
+          <div class="about__stats">
+            <div class="stat"><span class="stat__v" data-count="3">3</span><span class="stat__k mono">OS LAYERS</span></div>
+            <div class="stat"><span class="stat__v" data-count="5">5</span><span class="stat__k mono">ENGINES</span></div>
+            <div class="stat"><span class="stat__v">∞</span><span class="stat__k mono">DRAFTS</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ PRICING ════════════════ -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <header class="sec-head">
+        <div class="sec-head__tag">
+          <span class="sec-head__num mono">SECTION 04</span>
+          <span class="sec-head__line"></span>
+          <span class="sec-head__jp mono">価格</span>
+        </div>
+        <h2 class="sec-head__title">PRICING</h2>
+        <p class="sec-head__intro">
+          One forge, two access levels. Start free on the Whiteboard. Unlock the
+          complete system with a single, permanent Pro license.
+        </p>
+      </header>
+
+      <div class="price-grid">
+        <article class="panel price">
+          <div class="price__head">
+            <span class="price__id mono">TIER 00 · FREE</span>
+            <h3 class="price__name">WHITEBOARD</h3>
+          </div>
+          <div class="price__amount">
+            <span class="price__cur">€</span><span class="price__num">0</span>
+            <span class="price__per mono">/ FOREVER</span>
+          </div>
+          <p class="price__pitch">A minimal, distraction-free writing surface with the inline AI assistant always within reach. The forge, stripped to a single glowing line.</p>
+          <ul class="price__list mono">
+            <li><i class="ok"></i> Minimal Whiteboard UI</li>
+            <li><i class="ok"></i> Inline contextual AI assistant</li>
+            <li><i class="ok"></i> Format-aware writing</li>
+            <li><i class="ok"></i> DOCX / Text export</li>
+            <li><i class="no"></i> Structure tools &amp; Story Bible</li>
+            <li><i class="no"></i> Graph visualization</li>
+          </ul>
+          <a href="#downloads" class="btn btn--ghost btn--block">
+            <span class="btn__bracket">[</span>START FREE<span class="btn__bracket">]</span>
+          </a>
+        </article>
+
+        <article class="panel price price--pro">
+          <span class="price__ribbon mono">COMPLETE</span>
+          <div class="price__head">
+            <span class="price__id mono">TIER 01 · PRO LICENSE</span>
+            <h3 class="price__name">LOGOSFORGE PRO</h3>
+          </div>
+          <div class="price__amount">
+            <span class="price__cur">€</span><span class="price__num">99</span>
+            <span class="price__per mono">/ ONE-TIME</span>
+          </div>
+          <p class="price__pitch">Every engine, every instrument. The full narrative operating system — structure, Story Bible, graphs and all five writing engines, owned outright.</p>
+          <ul class="price__list mono">
+            <li><i class="ok"></i> Everything in Whiteboard</li>
+            <li><i class="ok"></i> All 5 narrative engines</li>
+            <li><i class="ok"></i> Structure tools · Story Grid · timelines</li>
+            <li><i class="ok"></i> Story Bible &amp; graph visualization</li>
+            <li><i class="ok"></i> Desktop + Web + PWA</li>
+            <li><i class="ok"></i> Local &amp; cloud AI, your keys</li>
+          </ul>
+          <a href="#downloads" class="btn btn--solid btn--block">
+            <span class="btn__bracket">[</span>GET PRO — 99€<span class="btn__bracket">]</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ DOWNLOADS ════════════════ -->
+  <section class="section downloads" id="downloads">
+    <div class="container">
+      <header class="sec-head">
+        <div class="sec-head__tag">
+          <span class="sec-head__num mono">SECTION 05</span>
+          <span class="sec-head__line"></span>
+          <span class="sec-head__jp mono">配備</span>
+        </div>
+        <h2 class="sec-head__title">DOWNLOADS</h2>
+        <p class="sec-head__intro">Deploy the forge to your platform of choice. Same project, same Story Bible, synced across every surface.</p>
+      </header>
+
+      <div class="dl-grid">
+        <div class="panel dl-block">
+          <div class="dl-block__head">
+            <span class="dl-block__k mono">UNIT A · 配備</span>
+            <h3 class="dl-block__title">DESKTOP</h3>
+            <p class="dl-block__sub mono">NATIVE BUILD · FULL SYSTEM</p>
+          </div>
+          <div class="dl-row-set">
+            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-win"/></svg></span>
+              <span class="dl-row__name">Windows</span>
+              <span class="dl-row__meta mono">.EXE · x64</span>
+              <span class="dl-row__go mono">DOWNLOAD →</span>
+            </a>
+            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-mac"/></svg></span>
+              <span class="dl-row__name">macOS</span>
+              <span class="dl-row__meta mono">.DMG · universal</span>
+              <span class="dl-row__go mono">DOWNLOAD →</span>
+            </a>
+            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-linux"/></svg></span>
+              <span class="dl-row__name">Linux</span>
+              <span class="dl-row__meta mono">.AppImage · .deb</span>
+              <span class="dl-row__go mono">DOWNLOAD →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="panel dl-block">
+          <div class="dl-block__head">
+            <span class="dl-block__k mono">UNIT B · 接続</span>
+            <h3 class="dl-block__title">WEB</h3>
+            <p class="dl-block__sub mono">PWA · NOTHING TO INSTALL</p>
+          </div>
+          <div class="dl-row-set">
+            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-web"/></svg></span>
+              <span class="dl-row__name">PC Browser</span>
+              <span class="dl-row__meta mono">CHROME · EDGE · FIREFOX</span>
+              <span class="dl-row__go mono">LAUNCH →</span>
+            </a>
+            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-ios"/></svg></span>
+              <span class="dl-row__name">iOS</span>
+              <span class="dl-row__meta mono">ADD TO HOME SCREEN</span>
+              <span class="dl-row__go mono">INSTALL →</span>
+            </a>
+            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
+              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-android"/></svg></span>
+              <span class="dl-row__name">Android</span>
+              <span class="dl-row__meta mono">PWA · PLAY (SOON)</span>
+              <span class="dl-row__go mono">INSTALL →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-note mono">
+        <span class="dot dot--live"></span>
+        FREE WHITEBOARD INCLUDED ON EVERY BUILD · PRO LICENSE UNLOCKS THE COMPLETE SYSTEM
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--lg" aria-hidden="true">
+          <svg viewBox="0 0 48 48" class="emblem"><use href="#emblem"/></svg>
+        </span>
+        <div>
+          <div class="footer__name">LOGOSFORGE</div>
+          <div class="footer__motto mono">FORGE WORLDS FROM WORDS · 言葉から世界を</div>
+        </div>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div class="footer__col">
+          <h4 class="footer__h mono">COMMUNITY</h4>
+          <a href="https://discord.gg/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-discord"/></svg></span>Discord — community &amp; support</a>
+          <a href="https://t.me/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-telegram"/></svg></span>Telegram — updates</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__h mono">SOCIAL</h4>
+          <a href="https://x.com/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-x"/></svg></span>X / Twitter</a>
+          <a href="https://youtube.com/@logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-youtube"/></svg></span>YouTube</a>
+          <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-github"/></svg></span>GitHub</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__h mono">PRODUCT</h4>
+          <a href="#downloads" class="footer__link">Products</a>
+          <a href="#pricing" class="footer__link">Pricing</a>
+          <a href="#about" class="footer__link">About</a>
+          <a href="https://github.com/fopearcano/storyplanner/tree/main/docs" target="_blank" rel="noopener" class="footer__link">Help &amp; Docs</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__h mono">LEGAL</h4>
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Use</a>
+          <a href="#" class="footer__link">License (99€ Pro)</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <span class="footer__copy mono">© 2026 LOGOSFORGE · NARRATIVE OS</span>
+      <span class="footer__credit mono">CRAFTED IN THE FORGE · ロゴスフォージ</span>
+      <span class="footer__policy mono">
+        <a href="#">Credits</a> · <a href="#">Copyright</a> · <a href="#">Policy</a>
+      </span>
+    </div>
+  </div>
+  <div class="footer__ruler tick-row" aria-hidden="true"></div>
+</footer>
+
+<!-- scanline overlay -->
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ════════════════ SVG SPRITE (defs) ════════════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- brand emblem: forge spark in a notched HUD frame -->
+    <g id="emblem">
+      <path d="M6 2 H14 M2 6 V14 M42 2 H34 M46 6 V14 M6 46 H14 M2 42 V34 M42 46 H34 M46 42 V34"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M24 9 L37 33 H11 Z" fill="none" stroke="#ff2d18" stroke-width="2.4"/>
+      <path d="M16.5 28 H31.5" stroke="#ff2d18" stroke-width="2.4"/>
+      <path d="M24 15 L24 23" stroke="#ffb000" stroke-width="2.4"/>
+      <circle cx="24" cy="13" r="1.6" fill="#ffb000"/>
+    </g>
+    <!-- feature icons -->
+    <g id="ic-ai" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="7" y="9" width="18" height="14" rx="1"/><path d="M11 14h10M11 18h6"/><path d="M16 5v4M13 5h6"/><circle cx="16" cy="27" r="1.4" fill="currentColor" stroke="none"/>
+    </g>
+    <g id="ic-edit" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M8 7h12M8 12h16M8 17h10M8 22h14"/><path d="M22 17l4 4-4 2 0-6z" fill="currentColor"/>
+    </g>
+    <g id="ic-structure" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="13" y="5" width="6" height="5"/><rect x="6" y="22" width="6" height="5"/><rect x="20" y="22" width="6" height="5"/><path d="M16 10v6M16 16H9v6M16 16h7v6"/>
+    </g>
+    <g id="ic-bible" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M8 6h12a3 3 0 013 3v17H11a3 3 0 01-3-3z"/><path d="M8 23a3 3 0 013-3h12"/><path d="M15 11h4"/>
+    </g>
+    <g id="ic-graph" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="8" cy="9" r="2.5"/><circle cx="24" cy="7" r="2.5"/><circle cx="23" cy="24" r="2.5"/><circle cx="10" cy="23" r="2.5"/><path d="M10 11l11 11M10.5 9.5l11-1M9 21l1-9M22 22l-11 1"/>
+    </g>
+    <g id="ic-core" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="16" cy="16" r="4"/><circle cx="16" cy="16" r="9"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M25 7l-3 3M10 22l-3 3"/>
+    </g>
+    <g id="ic-warn" fill="none">
+      <path d="M20 3 L38 33 H2 Z" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M20 14 V23" stroke="currentColor" stroke-width="3"/>
+      <circle cx="20" cy="28" r="1.7" fill="currentColor"/>
+    </g>
+    <!-- MAGI triple-core diagram -->
+    <g id="magi">
+      <circle cx="110" cy="100" r="86" fill="none" stroke="#5e0b07" stroke-width="1"/>
+      <circle cx="110" cy="100" r="64" fill="none" stroke="#5e0b07" stroke-width="1" stroke-dasharray="2 5"/>
+      <path d="M110 36 L171 134 H49 Z" fill="none" stroke="#e10600" stroke-width="1.3"/>
+      <path d="M110 100 L110 30 M110 100 L171 138 M110 100 L49 138" stroke="#e10600" stroke-width="0.8" stroke-dasharray="3 3"/>
+      <g font-family="'Share Tech Mono',monospace" fill="#ffb000" font-size="9" letter-spacing="1">
+        <g transform="translate(110,30)"><rect x="-24" y="-9" width="48" height="18" fill="#0a0608" stroke="#ffb000" stroke-width="1"/><text x="0" y="4" text-anchor="middle">MELCHIOR</text></g>
+        <g transform="translate(171,138)"><rect x="-26" y="-9" width="52" height="18" fill="#0a0608" stroke="#ffb000" stroke-width="1"/><text x="0" y="4" text-anchor="middle">BALTHASAR</text></g>
+        <g transform="translate(49,138)"><rect x="-22" y="-9" width="44" height="18" fill="#0a0608" stroke="#ffb000" stroke-width="1"/><text x="0" y="4" text-anchor="middle">CASPER</text></g>
+      </g>
+      <polygon points="110,84 124,108 96,108" fill="#ffb000"/>
+      <text x="110" y="103" text-anchor="middle" font-family="'Share Tech Mono',monospace" fill="#0a0608" font-size="8">01</text>
+    </g>
+    <!-- OS icons -->
+    <g id="os-win" fill="currentColor"><path d="M3 5l8-1v7H3zM12 3.9L21 3v8h-9zM3 12h8v7l-8-1zM12 12h9v8l-9-1z"/></g>
+    <g id="os-mac" fill="currentColor"><path d="M16 3c0 2-1.6 3.6-3.4 3.5C12.4 4.6 14 3 16 3zM18 12.5c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.3-3.9z"/></g>
+    <g id="os-linux" fill="currentColor"><path d="M12 2c-2.2 0-3.4 2-3.3 4.3.1 1.7.2 3-1 4.8C6 13.4 5 15 5 17c0 1.6 1 2.4 1.4 3.4.3.9-.2 1.6 1 1.8 1 .2 1.5-.7 1.5-1.4 1.2.6 4 .6 5.2 0 0 .7.5 1.6 1.5 1.4 1.2-.2.7-.9 1-1.8C18 17 19 15 19 13.8c0-2-1-3.6-2.7-5.7-1.2-1.8-1.1-3.1-1-4.8C15.4 4 14.2 2 12 2zm-1.8 5.2c.5 0 .9.5.9 1s-.4.7-.9.7-.9-.2-.9-.7.4-1 .9-1zm3.6 0c.5 0 .9.5.9 1s-.4.7-.9.7-.9-.2-.9-.7.4-1 .9-1zM12 10c.9 0 2.4.7 2.4 1.2 0 .3-1.5 1.1-2.4 1.1s-2.4-.8-2.4-1.1c0-.5 1.5-1.2 2.4-1.2z"/></g>
+    <g id="os-web" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></g>
+    <g id="os-ios" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></g>
+    <g id="os-android" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="9" width="12" height="9" rx="1"/><path d="M7 9c0-3 2.2-4.5 5-4.5S17 6 17 9M9 5.5L8 4M15 5.5L16 4M8 18v2.5M16 18v2.5"/></g>
+    <!-- social icons -->
+    <g id="so-discord" fill="currentColor"><path d="M19.5 5.5A16 16 0 0015.6 4.3l-.2.4a14.6 14.6 0 014 .9 12 12 0 00-12.8 0 14.6 14.6 0 014-.9l-.2-.4A16 16 0 004.5 5.5 18.2 18.2 0 002 18.6 16 16 0 007 21l.9-1.4c-.8-.3-1.6-.7-2.3-1.2.2-.1.4-.3.6-.4a11.4 11.4 0 009.8 0c.2.1.4.3.6.4-.7.5-1.5.9-2.3 1.2L17 21a16 16 0 005-2.4 18.2 18.2 0 00-2.5-13.1zM9 15c-.8 0-1.5-.8-1.5-1.7S8.2 11.5 9 11.5s1.5.8 1.5 1.8S9.8 15 9 15zm6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.8 1.5-1.8 1.5.8 1.5 1.8S15.8 15 15 15z"/></g>
+    <g id="so-telegram" fill="currentColor"><path d="M21.5 4.3L2.9 11.5c-1 .4-1 1.3-.2 1.6l4.7 1.5L19 7.5c.5-.3 1-.1.6.2l-9 8.2-.3 4.4c.4 0 .6-.2.8-.4l2-1.9 4.6 3.4c.8.5 1.4.2 1.6-.8l3-13.7c.3-1.3-.5-1.9-1.4-1.5z"/></g>
+    <g id="so-x" fill="currentColor"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.2L4 21H1l7.5-8.5L.6 3H7l4.5 5.9zm-1 16h1.7L7.6 4.8H5.8z"/></g>
+    <g id="so-youtube" fill="currentColor"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.4 4.8 12 4.8 12 4.8s-4.4 0-7.2.2c-.4.1-1.2.1-2 .9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1c0 1.8.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.8.8 2.3.9 1.6.2 6.9.2 6.9.2s4.4 0 7.2-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1c0-1.8-.2-3.5-.2-3.5zM10 14.6V8.9l4.7 2.9z"/></g>
+    <g id="so-github" fill="currentColor"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.300-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0012 2z"/></g>
+  </defs>
+</svg>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
