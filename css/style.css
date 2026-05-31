@@ -1,5 +1,5 @@
 /* ============================================================
-   LOGOSFORGE — Narrative OS  ·  NERV / MAGI terminal aesthetic
+   LOGOSFORGE — Narrative OS  ·  command-terminal aesthetic
    ============================================================ */
 
 :root{
@@ -365,10 +365,14 @@ body::after{
 .about__p{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:16px}
 .about__p strong{color:var(--red-bright);font-weight:600}
 .about__side{position:sticky;top:120px}
-.magi{position:relative;text-align:center;margin-bottom:24px}
-.magi__svg{width:100%;max-width:300px;margin-inline:auto;
-  filter:drop-shadow(0 0 30px rgba(225,6,0,.25))}
-.magi__cap{font-size:10px;color:var(--faint);letter-spacing:.2em;margin-top:8px}
+.core{position:relative;text-align:center;margin-bottom:24px}
+.core__svg{width:100%;max-width:330px;margin-inline:auto;
+  filter:drop-shadow(0 0 26px rgba(225,6,0,.3))}
+.core__sweep{transform-box:view-box;transform-origin:180px 180px;animation:coreSweep 7s linear infinite}
+@keyframes coreSweep{to{transform:rotate(360deg)}}
+.core__ring--spin{transform-box:view-box;transform-origin:180px 180px;animation:coreSpin 48s linear infinite}
+@keyframes coreSpin{to{transform:rotate(360deg)}}
+.core__cap{font-size:10px;color:var(--faint);letter-spacing:.2em;margin-top:10px}
 .about__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .stat{background:var(--bg-2);padding:18px 10px;text-align:center}
 .stat__v{display:block;font-family:var(--f-disp);font-weight:700;font-size:32px;color:var(--red-bright);line-height:1}
@@ -479,6 +483,60 @@ body::after{
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ============================================================
+   Advanced HUD graphics
+   ============================================================ */
+/* CRT bloom behind the wordmark */
+.hero__bloom{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(46% 38% at 50% 42%,rgba(225,6,0,.22),rgba(225,6,0,.05) 55%,transparent 72%);
+  mix-blend-mode:screen;animation:bloomPulse 6s var(--ease) infinite}
+@keyframes bloomPulse{0%,100%{opacity:.7}50%{opacity:1}}
+
+/* hero corner frame brackets */
+.hud-frame{position:absolute;inset:18px;z-index:3;pointer-events:none}
+.hud-frame__c{position:absolute;width:26px;height:26px}
+.hud-frame__c--tl{top:0;left:0;border-top:2px solid var(--red);border-left:2px solid var(--red)}
+.hud-frame__c--tr{top:0;right:0;border-top:2px solid var(--red);border-right:2px solid var(--red)}
+.hud-frame__c--bl{bottom:0;left:0;border-bottom:2px solid var(--red);border-left:2px solid var(--red)}
+.hud-frame__c--br{bottom:0;right:0;border-bottom:2px solid var(--red);border-right:2px solid var(--red)}
+.hud-frame__c::after{content:"";position:absolute;width:5px;height:5px;background:var(--red);
+  box-shadow:0 0 8px var(--red-glow)}
+.hud-frame__c--tl::after{top:-2px;left:-2px}.hud-frame__c--tr::after{top:-2px;right:-2px}
+.hud-frame__c--bl::after{bottom:-2px;left:-2px}.hud-frame__c--br::after{bottom:-2px;right:-2px}
+@media(max-width:680px){.hud-frame{inset:10px}.hud-frame__c{width:16px;height:16px}}
+
+/* scattered micro-codes */
+.microcodes{position:absolute;inset:0;z-index:2;pointer-events:none;font-size:10px;
+  letter-spacing:.18em;color:var(--faint)}
+.microcodes__i{position:absolute;left:var(--x);top:var(--y);white-space:nowrap;opacity:.7}
+.microcodes__i::before{content:"› ";color:var(--red-bright)}
+@media(max-width:880px){.microcodes{display:none}}
+
+/* numbered ruler (filled by JS) */
+.ruler{display:block;width:100%;height:24px;overflow:visible}
+.ruler line{stroke:var(--line-2)}
+.ruler .ruler__maj{stroke:var(--red-bright);stroke-width:1.2}
+.ruler text{fill:var(--faint);font-family:var(--f-mono);font-size:8px;letter-spacing:.08em}
+.hero__code .ruler{margin-bottom:8px;opacity:.85}
+
+/* schematic divider band */
+.schematic{position:relative;width:100%;height:220px;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(80% 120% at 50% 50%,rgba(225,6,0,.10),transparent 70%),
+    linear-gradient(180deg,#070708,#050506)}
+.schematic__svg{position:absolute;inset:0;width:100%;height:100%}
+.schematic__label{position:absolute;top:14px;z-index:2;font-size:11px;letter-spacing:.2em;color:var(--white)}
+.schematic__label span{display:block;font-size:9px;color:var(--faint);letter-spacing:.16em;margin-top:3px}
+.schematic__label--l{left:clamp(14px,4vw,56px);border-left:2px solid var(--red);padding-left:10px}
+.schematic__label--r{right:clamp(14px,4vw,56px);text-align:right;border-right:2px solid var(--amber);padding-right:10px;color:var(--amber)}
+.schematic__flow{stroke-dasharray:5 7;animation:flow 2.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+
+/* extra bloom on big section titles */
+.sec-head__title,.priority__title,.dl-block__title{text-shadow:0 0 26px rgba(225,6,0,.25)}
+.wordmark{will-change:filter}
 
 /* ============================================================
    Mobile nav drawer

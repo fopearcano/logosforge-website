@@ -8,14 +8,17 @@ novelists, screenwriters and narrative designers.
 
 ## Design language
 
-The site is built in a **NERV / MAGI terminal aesthetic** (inspired by the
-reference frames in [`/reference-ui`](./reference-ui)):
+The site is built in a dark **command-terminal / instrument-panel aesthetic**
+(inspired by the reference frames in [`/reference-ui`](./reference-ui)):
 
 - Pure-black surfaces, signal-red (`#e10600`) and amber (`#ffb000`) accents
 - Monospace HUD micro-typography (`Share Tech Mono`) over a condensed
   techno display face (`Chakra Petch`), with Japanese accents (`Noto Sans JP`)
-- Corner-bracket panels, tick-mark rulers, dot grids, a live status bar,
-  a drifting constellation canvas and a subtle scanline / CRT overlay
+- Corner-bracket panels, numbered tick-rulers, dot grids, a live status bar,
+  scattered micro-codes and a subtle scanline / CRT overlay
+- Procedurally-generated technical graphics: an animated hero oscilloscope +
+  node field, a concentric **triple-core critique radar**, and a full-bleed
+  **story-graph schematic** divider (built in `js/main.js`, no libraries)
 
 ## What's on the page
 
@@ -24,7 +27,7 @@ reference frames in [`/reference-ui`](./reference-ui)):
 | **Hero** | Full-bleed responsive `LOGOSFORGE` wordmark (SVG, spans the viewport at every size), tagline, deploy CTAs, live HUD meta |
 | **Main Features** | Inline AI Assistant · Manuscript Editor · Structure Tools · Story Bible · Graph Visualization · Local/Cloud AI |
 | **Writing Modes** | Five narrative engines — **Screenplay is featured as the priority unit** (market-gap business case), plus Novel, Graphic Novel, Series, Stage Script |
-| **About** | The "narrative OS" manifesto + a MAGI triple-core homage |
+| **About** | The "narrative OS" manifesto + an animated triple-core critique radar |
 | **Pricing** | Free (Whiteboard only · 0€) and Pro license (Complete · 99€) |
 | **Downloads** | Desktop (Windows / macOS / Linux) and Web (PC / iOS / Android PWA) |
 | **Footer** | Discord (community/support), Telegram (updates), social links, credits / copyright / policy |
