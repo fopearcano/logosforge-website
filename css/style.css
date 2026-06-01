@@ -634,3 +634,9 @@ body::after{
 .modal__body a{color:var(--red-bright);text-decoration:underline;text-underline-offset:2px}
 .modal__body a:hover{color:#fff}
 body.modal-open{overflow:hidden}
+
+/* small phones: tighten the brand so the menu button always fits */
+@media(max-width:480px){
+  .brand__name{font-size:15px;letter-spacing:.12em}
+  .nav__inner{gap:12px}
+}
