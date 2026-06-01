@@ -32,12 +32,13 @@
   --faint:     #6b7186;
   --ghost:     #3a3f52;
 
+  --f-head: 'Oxanium','Chakra Petch','Rajdhani',system-ui,sans-serif;
   --f-disp: 'Chakra Petch','Rajdhani',system-ui,sans-serif;
   --f-mono: 'Share Tech Mono','JetBrains Mono',ui-monospace,'Courier New',monospace;
   --f-jp:   'Noto Sans JP',sans-serif;
 
   --maxw: 1280px;
-  --hud-h: 30px;
+  --hud-h: 0px;
   --nav-h: 62px;
   --ease: cubic-bezier(.2,.7,.2,1);
 }
@@ -62,6 +63,10 @@ ul{list-style:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ::selection{background:var(--red);color:#fff}
 
+/* angular display face for the wordmark + headings */
+.wordmark text,.brand__name,.sec-head__title,.priority__title,.dl-block__title,
+.price__name,.price__num,.mode__title,.feat__title,.stat__v{font-family:var(--f-head)}
+
 /* fixed background field: pure black + faint red vignette glow */
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
@@ -83,7 +88,7 @@ body::after{
 .mono{font-family:var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
 .dim{color:var(--dim)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--faint);display:inline-block;flex:none}
-.dot--live{background:var(--red-bright);box-shadow:0 0 8px var(--red-glow);animation:pulse 1.8s infinite}
+.dot--live{background:var(--red-bright);box-shadow:0 0 8px var(--red-glow)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 
 .tick-row{display:block;height:9px;width:100%;
@@ -332,7 +337,7 @@ body::after{
 .priority__head{display:flex;align-items:center;gap:18px;padding:24px 28px;
   border-bottom:1px solid var(--line-2)}
 .warn-tri{width:40px;height:36px;color:var(--amber);flex:none;
-  filter:drop-shadow(0 0 8px rgba(255,179,0,.4));animation:warnPulse 2.4s infinite}
+  filter:drop-shadow(0 0 8px rgba(255,179,0,.4))}
 @keyframes warnPulse{0%,100%{opacity:1}50%{opacity:.45}}
 .priority__flag{font-size:11px;color:var(--amber);letter-spacing:.2em;display:block;margin-bottom:4px}
 .priority__flag span{font-family:var(--f-jp)}
@@ -359,7 +364,7 @@ body::after{
   background:rgba(232,18,10,.06);display:flex;align-items:center;overflow:hidden}
 .spec-bar__fill{position:absolute;inset:0;width:92%;
   background:repeating-linear-gradient(45deg,rgba(232,18,10,.38) 0 8px,rgba(232,18,10,.12) 8px 16px);
-  animation:fillSlide 18s linear infinite}
+  }
 @keyframes fillSlide{to{background-position:160px 0}}
 .spec-bar__txt{position:relative;font-size:10px;color:var(--white);padding-left:10px;z-index:2}
 
@@ -513,7 +518,7 @@ body::after{
 /* CRT bloom behind the wordmark */
 .hero__bloom{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(46% 38% at 50% 42%,rgba(232,18,10,.16),rgba(232,18,10,.04) 55%,transparent 72%);
-  mix-blend-mode:screen;animation:bloomPulse 7s var(--ease) infinite}
+  mix-blend-mode:screen}
 @keyframes bloomPulse{0%,100%{opacity:.55}50%{opacity:.85}}
 
 /* hero panel: full glowing red border + corner markers */

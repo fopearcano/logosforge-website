@@ -8,17 +8,16 @@ novelists, screenwriters and narrative designers.
 
 ## Design language
 
-The site is built in a dark **command-terminal / instrument-panel aesthetic**
+The site is built in a dark **red-glow CRT panel aesthetic**
 (inspired by the reference frames in [`/reference-ui`](./reference-ui)):
 
-- Pure-black surfaces, signal-red (`#e10600`) and amber (`#ffb000`) accents
-- Monospace HUD micro-typography (`Share Tech Mono`) over a condensed
-  techno display face (`Chakra Petch`), with Japanese accents (`Noto Sans JP`)
-- Corner-bracket panels, numbered tick-rulers, dot grids, a live status bar,
-  scattered micro-codes and a subtle scanline / CRT overlay
-- Procedurally-generated technical graphics: an animated hero oscilloscope +
-  node field, a concentric **triple-core critique radar**, and a full-bleed
-  **story-graph schematic** divider (built in `js/main.js`, no libraries)
+- Pure-black canvas with navy→maroon CRT panel interiors, glowing crimson
+  (`#e8120a`) borders + corner markers, and gold (`#ffb300`) technical data
+- Heavy red glowing display type for the wordmark and section titles
+  (`Oxanium`), with readable body copy (`Chakra Petch`) and `Share Tech Mono`
+  for data labels
+- A single quiet graphic — a static **triple-core diagram** in the About
+  section (built in `js/main.js`, no libraries). No background animations.
 
 ## What's on the page
 
@@ -40,10 +39,9 @@ Navigation matches the brief: **Products** (Desktop → Download, Web),
 Zero build step — hand-authored static HTML / CSS / JS so it deploys anywhere.
 
 ```
-index.html        # single-page site + inline SVG sprite
+index.html        # single-page site + inline SVG sprite (logo mark, icons)
 css/style.css     # design system + all sections (responsive, reduced-motion aware)
-js/main.js        # live clock, boot typing, click dropdowns, mobile drawer,
-                  # constellation canvas, scroll-reveal + count-up
+js/main.js        # click dropdowns, mobile drawer, nav state, static core diagram
 assets/           # favicon
 reference-ui/     # style reference frames
 ```
