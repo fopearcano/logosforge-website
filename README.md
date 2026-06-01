@@ -42,7 +42,8 @@ Zero build step — hand-authored static HTML / CSS / JS so it deploys anywhere.
 index.html        # single-page site + inline SVG sprite (logo mark, icons)
 css/style.css     # design system + all sections (responsive, reduced-motion aware)
 js/main.js        # click dropdowns, mobile drawer, nav state, static core diagram
-assets/           # favicon
+site.webmanifest  # PWA / dock-icon manifest
+assets/           # dock icon (icon.svg + apple-touch / 192 / 512 PNGs)
 reference-ui/     # style reference frames
 ```
 
