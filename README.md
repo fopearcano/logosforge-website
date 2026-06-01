@@ -13,9 +13,9 @@ The site is built in a dark **red-glow CRT panel aesthetic**
 
 - Pure-black canvas with navy→maroon CRT panel interiors, glowing crimson
   (`#e8120a`) borders + corner markers, and gold (`#ffb300`) technical data
-- The `LOGOSFORGE` wordmark is set in an angular "Central-Dogma"-style display
-  face (`Tektur`); **everything else** uses a classic screenplay typewriter
-  face (`Courier Prime`) — fitting for a writing app, and very readable
+- The `LOGOSFORGE` wordmark is set in `Oxanium` (angular techno display);
+  **everything else** uses `Special Elite`, a distressed vintage typewriter
+  face — fitting for a writing app
 - The official **AΦ logo mark** in the nav, footer and About section, and as
   the app/dock icon. No background animations.
 

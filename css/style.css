@@ -32,10 +32,10 @@
   --faint:     #6b7186;
   --ghost:     #3a3f52;
 
-  --f-title:'Tektur','Oxanium','Chakra Petch',system-ui,sans-serif;
-  --f-disp: 'Courier Prime','Courier New',ui-monospace,monospace;
-  --f-mono: 'Courier Prime','Courier New',ui-monospace,monospace;
-  --f-head: 'Courier Prime','Courier New',ui-monospace,monospace;
+  --f-title:'Oxanium','Chakra Petch',system-ui,sans-serif;
+  --f-disp: 'Special Elite','Courier New',ui-monospace,monospace;
+  --f-mono: 'Special Elite','Courier New',ui-monospace,monospace;
+  --f-head: 'Special Elite','Courier New',ui-monospace,monospace;
 
   --maxw: 1280px;
   --hud-h: 0px;
