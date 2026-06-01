@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Pro — LOGOSFORGE</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .checkout{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:80px 20px}
+  .checkout__card{width:min(100%,560px);padding:40px clamp(24px,5vw,48px) 44px;text-align:center}
+  .checkout__logo{width:84px;height:84px;margin:0 auto 22px;display:block}
+  .checkout__id{font-size:10px;letter-spacing:.2em;color:var(--amber);opacity:.75}
+  .checkout__title{font-family:var(--f-title);font-size:clamp(28px,6vw,40px);color:var(--red);
+    letter-spacing:.04em;line-height:1;margin:8px 0 6px;text-shadow:0 0 26px rgba(232,18,10,.5)}
+  .checkout__price{display:flex;align-items:baseline;justify-content:center;gap:6px;margin:14px 0 4px}
+  .checkout__price b{font-family:var(--f-title);font-size:54px;color:var(--red-bright);line-height:.9}
+  .checkout__per{font-size:11px;letter-spacing:.12em;color:var(--faint)}
+  .checkout__note{font-size:14px;line-height:1.75;color:var(--text);max-width:420px;margin:18px auto 28px}
+  .checkout__status{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.16em;
+    color:var(--amber);border:1px solid rgba(255,179,0,.4);background:rgba(255,179,0,.05);padding:7px 12px;margin-bottom:26px}
+  .checkout__actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn--disabled{opacity:.45;pointer-events:none}
+</style>
+</head>
+<body>
+<main class="checkout">
+  <article class="checkout__card panel">
+    <img class="checkout__logo" src="assets/logo.png" alt="Logosforge" width="84" height="84">
+    <div class="checkout__id mono">TIER 01 · PRO LICENSE</div>
+    <h1 class="checkout__title">LOGOSFORGE PRO</h1>
+    <div class="checkout__price"><span style="color:var(--dim);font-size:22px">€</span><b>99</b><span class="checkout__per mono">/ ONE-TIME</span></div>
+
+    <div class="checkout__status mono"><span class="dot dot--live"></span>SECURE CHECKOUT — BEING CONNECTED</div>
+
+    <p class="checkout__note">
+      The payment &amp; license-activation system is being wired up. It will issue a
+      permanent key that unlocks every engine across desktop, web and PWA. Join the
+      community to get the purchase link the moment it goes live.
+    </p>
+
+    <div class="checkout__actions">
+      <span class="btn btn--solid btn--disabled" aria-disabled="true">
+        <span class="btn__bracket">[</span>PAY 99€ — SOON<span class="btn__bracket">]</span>
+      </span>
+      <a href="https://discord.gg/CgFXVJkXCW" target="_blank" rel="noopener" class="btn btn--ghost">
+        <span class="btn__bracket">[</span>GET NOTIFIED ON DISCORD<span class="btn__bracket">]</span>
+      </a>
+      <a href="index.html#pricing" class="btn btn--ghost">
+        <span class="btn__bracket">[</span>← BACK<span class="btn__bracket">]</span>
+      </a>
+    </div>
+  </article>
+</main>
+<div class="scanlines" aria-hidden="true"></div>
+</body>
+</html>

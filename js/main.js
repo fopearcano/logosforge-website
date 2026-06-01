@@ -39,4 +39,31 @@
     a.addEventListener('click', () => { closeAll(null); if (isMobile()) closeMenu(); }));
   window.addEventListener('resize', () => { if (!isMobile()) closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(null); closeMenu(); } });
+
+  /* ---------- legal modals (floating windows) ---------- */
+  $$('[data-dialog]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dlg = document.getElementById(btn.dataset.dialog);
+      if (dlg && dlg.showModal) { dlg.showModal(); document.body.classList.add('modal-open'); }
+    });
+  });
+  $$('.modal').forEach(dlg => {
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });   // click outside box
+    dlg.querySelector('[data-close]')?.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('close', () => document.body.classList.remove('modal-open'));
+  });
+
+  /* ---------- newsletter sign-up (client-side stub) ---------- */
+  const nl = $('#newsletter');
+  if (nl) {
+    nl.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = $('#nl-email'), msg = $('#nl-msg');
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      if (!valid) { msg.style.color = 'var(--red-bright)'; msg.textContent = '✕ Enter a valid email address.'; return; }
+      msg.style.color = 'var(--amber)'; msg.textContent = '✓ Subscribed — check your inbox to confirm.';
+      email.value = ''; email.disabled = true;
+      nl.querySelector('.newsletter__btn').disabled = true;
+    });
+  }
 })();

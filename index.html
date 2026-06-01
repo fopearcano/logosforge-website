@@ -69,7 +69,7 @@
           <button class="menu__link" aria-expanded="false" aria-haspopup="true">Help <i class="caret"></i></button>
           <div class="submenu">
             <div class="submenu__head">HELP</div>
-            <a class="submenu__link" href="https://discord.gg/logosforge" target="_blank" rel="noopener">
+            <a class="submenu__link" href="https://discord.gg/CgFXVJkXCW" target="_blank" rel="noopener">
               <span class="submenu__k">Support</span>
               <span class="submenu__v">Community help → Discord</span>
             </a>
@@ -266,13 +266,15 @@
         <div class="priority__grid">
           <div class="priority__copy">
             <p class="priority__lead">
-              The market lacks a <strong>professional, AI-assisted screenplay app.</strong>
-              Logosforge fills that gap.
+              Everything you need to write a screenplay — <strong>formatted to the
+              industry standard as you type.</strong>
             </p>
             <p>
-              Acts, sequences, scenes and beats — industry-standard structure with
-              an AI that actually understands sluglines, action density and the
-              difference between a beat and a scene. Format-aware to the line.
+              Sluglines, action, character cues, parentheticals, dialogue and
+              transitions fall into place automatically. Break your story into acts,
+              sequences, scenes and beats, jump between them in a click, and let the
+              inline AI pressure-test your pacing, structure and each scene's reason
+              to exist — then export a clean, submission-ready script.
             </p>
             <div class="priority__cta">
               <a href="#downloads" class="btn btn--solid btn--sm">
@@ -285,10 +287,6 @@
             <div class="spec-row"><span class="mono dim">FORMAT</span><span>Industry-standard, format-aware</span></div>
             <div class="spec-row"><span class="mono dim">AI</span><span>Slugline &amp; beat-aware critique</span></div>
             <div class="spec-row"><span class="mono dim">EXPORT</span><span>DOCX / Text</span></div>
-            <div class="spec-bar" aria-hidden="true">
-              <span class="spec-bar__fill"></span>
-              <span class="spec-bar__txt mono">MARKET DEMAND — CRITICAL</span>
-            </div>
           </div>
         </div>
       </article>
@@ -425,7 +423,7 @@
             <li><i class="ok"></i> Desktop + Web + PWA</li>
             <li><i class="ok"></i> Local &amp; cloud AI, your keys</li>
           </ul>
-          <a href="#downloads" class="btn btn--solid btn--block">
+          <a href="checkout.html" class="btn btn--solid btn--block">
             <span class="btn__bracket">[</span>GET PRO — 99€<span class="btn__bracket">]</span>
           </a>
         </article>
@@ -528,14 +526,20 @@
       <nav class="footer__cols" aria-label="Footer">
         <div class="footer__col">
           <h4 class="footer__h mono">COMMUNITY</h4>
-          <a href="https://discord.gg/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-discord"/></svg></span>Discord — community &amp; support</a>
-          <a href="https://t.me/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-telegram"/></svg></span>Telegram — updates</a>
+          <a href="https://discord.gg/CgFXVJkXCW" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-discord"/></svg></span>Discord — community &amp; support</a>
+          <form class="newsletter" id="newsletter" novalidate>
+            <label class="newsletter__label mono" for="nl-email">NEWSLETTER — UPDATES</label>
+            <div class="newsletter__row">
+              <input class="newsletter__input" id="nl-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" required>
+              <button class="newsletter__btn" type="submit" aria-label="Subscribe">→</button>
+            </div>
+            <p class="newsletter__msg mono" id="nl-msg" role="status" aria-live="polite"></p>
+          </form>
         </div>
         <div class="footer__col">
           <h4 class="footer__h mono">SOCIAL</h4>
           <a href="https://x.com/logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-x"/></svg></span>X / Twitter</a>
           <a href="https://youtube.com/@logosforge" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-youtube"/></svg></span>YouTube</a>
-          <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="footer__link"><span class="footer__ico"><svg viewBox="0 0 24 24"><use href="#so-github"/></svg></span>GitHub</a>
         </div>
         <div class="footer__col">
           <h4 class="footer__h mono">PRODUCT</h4>
@@ -546,9 +550,9 @@
         </div>
         <div class="footer__col">
           <h4 class="footer__h mono">LEGAL</h4>
-          <a href="#" class="footer__link">Privacy Policy</a>
-          <a href="#" class="footer__link">Terms of Use</a>
-          <a href="#" class="footer__link">License (99€ Pro)</a>
+          <button type="button" class="footer__link footer__link--btn" data-dialog="dlg-privacy">Privacy Policy</button>
+          <button type="button" class="footer__link footer__link--btn" data-dialog="dlg-terms">Terms of Use</button>
+          <button type="button" class="footer__link footer__link--btn" data-dialog="dlg-copyright">Copyright</button>
         </div>
       </nav>
     </div>
@@ -563,6 +567,90 @@
   </div>
   <div class="footer__ruler tick-row" aria-hidden="true"></div>
 </footer>
+
+<!-- ════════════════ LEGAL MODALS (floating windows) ════════════════ -->
+<dialog class="modal" id="dlg-privacy" aria-labelledby="dlg-privacy-t">
+  <article class="modal__box panel">
+    <button type="button" class="modal__close" data-close aria-label="Close">✕</button>
+    <span class="modal__kicker mono">LOGOSFORGE · LEGAL</span>
+    <h2 class="modal__title" id="dlg-privacy-t">Privacy Policy</h2>
+    <p class="modal__meta mono">LAST UPDATED 2026.06</p>
+    <div class="modal__body">
+      <p>Logosforge is built local-first. Your manuscripts, story bibles and project
+        files live on your own device unless you explicitly enable sync — we never
+        upload, read, sell or train on your writing.</p>
+      <h3>What we collect</h3>
+      <p>Only the minimum to run the service: your email if you create an account or
+        buy a Pro license, and anonymous, opt-in diagnostics that help us fix crashes.
+        Payment details are handled directly by our payment processor and are never
+        stored on our servers.</p>
+      <h3>AI requests</h3>
+      <p>When you use cloud AI, the text you send goes to the model provider you choose,
+        using your own API key. Logosforge does not retain or inspect those requests.
+        Run a local model and nothing leaves your machine at all.</p>
+      <h3>Cookies</h3>
+      <p>This website uses no advertising or cross-site tracking cookies. Any storage is
+        strictly functional (e.g. remembering your license activation).</p>
+      <h3>Your rights</h3>
+      <p>You can request access to, export of, or deletion of any personal data we hold.
+        Email <a href="mailto:privacy@logosforge.app">privacy@logosforge.app</a>.</p>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="dlg-terms" aria-labelledby="dlg-terms-t">
+  <article class="modal__box panel">
+    <button type="button" class="modal__close" data-close aria-label="Close">✕</button>
+    <span class="modal__kicker mono">LOGOSFORGE · LEGAL</span>
+    <h2 class="modal__title" id="dlg-terms-t">Terms of Use</h2>
+    <p class="modal__meta mono">LAST UPDATED 2026.06</p>
+    <div class="modal__body">
+      <p>By downloading or using Logosforge you agree to these terms.</p>
+      <h3>Licenses</h3>
+      <p>The free Whiteboard tier is provided at no cost for personal and commercial
+        writing. The Pro license (one-time, 99€) unlocks the complete system for a single
+        user and may be installed on the devices you personally use.</p>
+      <h3>Acceptable use</h3>
+      <p>Don't resell, redistribute or reverse-engineer the software, and don't use it to
+        produce unlawful content. License keys are personal and may not be shared.</p>
+      <h3>Your work &amp; AI output</h3>
+      <p>You retain full ownership of everything you write. AI suggestions are provided
+        "as is" and may be inaccurate — you are responsible for reviewing output and for
+        ensuring you hold the rights to any material you generate or import.</p>
+      <h3>Warranty &amp; liability</h3>
+      <p>The software is provided without warranty of any kind. To the maximum extent
+        permitted by law, Logosforge is not liable for lost work, lost profits or
+        indirect damages. Keep backups of important manuscripts.</p>
+      <h3>Contact</h3>
+      <p><a href="mailto:support@logosforge.app">support@logosforge.app</a></p>
+    </div>
+  </article>
+</dialog>
+
+<dialog class="modal" id="dlg-copyright" aria-labelledby="dlg-copyright-t">
+  <article class="modal__box panel">
+    <button type="button" class="modal__close" data-close aria-label="Close">✕</button>
+    <span class="modal__kicker mono">LOGOSFORGE · LEGAL</span>
+    <h2 class="modal__title" id="dlg-copyright-t">Copyright</h2>
+    <p class="modal__meta mono">© 2026 LOGOSFORGE</p>
+    <div class="modal__body">
+      <h3>Your writing is yours</h3>
+      <p>You own the full copyright to every manuscript, screenplay, script, outline and
+        note you create in Logosforge. We claim no rights over your work and never use it
+        for promotion or model training.</p>
+      <h3>Our software &amp; brand</h3>
+      <p>The Logosforge application, website, source assets, the LOGOSFORGE name and the
+        logo mark are © 2026 Logosforge. All rights reserved. They may not be copied,
+        redistributed or used to imply endorsement without written permission.</p>
+      <h3>Third-party components</h3>
+      <p>Logosforge includes open-source components used under their respective licenses;
+        full attributions ship with the application's About panel.</p>
+      <h3>Reporting infringement</h3>
+      <p>To report a copyright concern, email
+        <a href="mailto:legal@logosforge.app">legal@logosforge.app</a>.</p>
+    </div>
+  </article>
+</dialog>
 
 <!-- scanline overlay -->
 <div class="scanlines" aria-hidden="true"></div>
@@ -603,10 +691,8 @@
     <g id="os-android" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="9" width="12" height="9" rx="1"/><path d="M7 9c0-3 2.2-4.5 5-4.5S17 6 17 9M9 5.5L8 4M15 5.5L16 4M8 18v2.5M16 18v2.5"/></g>
     <!-- social icons -->
     <g id="so-discord" fill="currentColor"><path d="M19.5 5.5A16 16 0 0015.6 4.3l-.2.4a14.6 14.6 0 014 .9 12 12 0 00-12.8 0 14.6 14.6 0 014-.9l-.2-.4A16 16 0 004.5 5.5 18.2 18.2 0 002 18.6 16 16 0 007 21l.9-1.4c-.8-.3-1.6-.7-2.3-1.2.2-.1.4-.3.6-.4a11.4 11.4 0 009.8 0c.2.1.4.3.6.4-.7.5-1.5.9-2.3 1.2L17 21a16 16 0 005-2.4 18.2 18.2 0 00-2.5-13.1zM9 15c-.8 0-1.5-.8-1.5-1.7S8.2 11.5 9 11.5s1.5.8 1.5 1.8S9.8 15 9 15zm6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.8 1.5-1.8 1.5.8 1.5 1.8S15.8 15 15 15z"/></g>
-    <g id="so-telegram" fill="currentColor"><path d="M21.5 4.3L2.9 11.5c-1 .4-1 1.3-.2 1.6l4.7 1.5L19 7.5c.5-.3 1-.1.6.2l-9 8.2-.3 4.4c.4 0 .6-.2.8-.4l2-1.9 4.6 3.4c.8.5 1.4.2 1.6-.8l3-13.7c.3-1.3-.5-1.9-1.4-1.5z"/></g>
     <g id="so-x" fill="currentColor"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.2L4 21H1l7.5-8.5L.6 3H7l4.5 5.9zm-1 16h1.7L7.6 4.8H5.8z"/></g>
     <g id="so-youtube" fill="currentColor"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.4 4.8 12 4.8 12 4.8s-4.4 0-7.2.2c-.4.1-1.2.1-2 .9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1c0 1.8.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.8.8 2.3.9 1.6.2 6.9.2 6.9.2s4.4 0 7.2-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1c0-1.8-.2-3.5-.2-3.5zM10 14.6V8.9l4.7 2.9z"/></g>
-    <g id="so-github" fill="currentColor"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.300-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0012 2z"/></g>
   </defs>
 </svg>
 
