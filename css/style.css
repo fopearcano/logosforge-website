@@ -201,7 +201,8 @@ body::after{
 /* ============================================================
    Hero
    ============================================================ */
-.hero{position:relative;min-height:100svh;padding-top:calc(var(--hud-h) + var(--nav-h));
+.hero{position:relative;min-height:100svh;
+  padding-top:calc(var(--hud-h) + var(--nav-h));padding-bottom:clamp(58px,9vh,104px);
   display:flex;flex-direction:column;justify-content:center;overflow:hidden;
   background:
     radial-gradient(80% 60% at 50% 12%,rgba(12,20,52,.55),transparent 60%),
@@ -253,7 +254,7 @@ body::after{
   text-shadow:0 1px 12px rgba(0,0,0,.85)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
 
-.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:42px;
+.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:clamp(20px,3.2vh,30px);
   background:var(--line);border:1px solid var(--line);max-width:760px}
 .meta-cell{background:var(--bg-2);padding:14px 16px;display:flex;flex-direction:column;
   justify-content:space-between;gap:8px;min-height:64px}
