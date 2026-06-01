@@ -132,9 +132,8 @@ body::after{
   width:min(100% - 40px,var(--maxw));margin-inline:auto}
 
 .brand{display:flex;align-items:center;gap:11px;flex:none}
-.brand__mark{width:30px;height:30px;color:var(--white);flex:none;
-  filter:drop-shadow(0 0 5px rgba(232,18,10,.25))}
-.brand__mark .emblem{width:100%;height:100%}
+.brand__mark{width:34px;height:34px;flex:none}
+.brand__mark img{width:100%;height:100%;display:block;object-fit:contain}
 .brand__name{font-weight:700;font-size:17px;letter-spacing:.26em;color:var(--white)}
 .brand__tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.2em;color:var(--red-bright);
   border:1px solid var(--red-deep);padding:2px 5px;border-radius:2px;background:rgba(232,18,10,.06)}
@@ -391,14 +390,9 @@ body::after{
 .about__p{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:16px}
 .about__p strong{color:var(--red-bright);font-weight:600}
 .about__side{position:sticky;top:120px}
-.core{position:relative;text-align:center;margin-bottom:24px}
-.core__svg{width:100%;max-width:330px;margin-inline:auto;
-  filter:drop-shadow(0 0 26px rgba(232,18,10,.3))}
-.core__sweep{transform-box:view-box;transform-origin:180px 180px;animation:coreSweep 7s linear infinite}
-@keyframes coreSweep{to{transform:rotate(360deg)}}
-.core__ring--spin{transform-box:view-box;transform-origin:180px 180px;animation:coreSpin 48s linear infinite}
-@keyframes coreSpin{to{transform:rotate(360deg)}}
-.core__cap{font-size:10px;color:var(--faint);letter-spacing:.2em;margin-top:10px}
+.about__logo{text-align:center;margin-bottom:24px}
+.about__logo img{width:100%;max-width:300px;height:auto;margin-inline:auto;display:block;
+  filter:drop-shadow(0 0 34px rgba(232,18,10,.3))}
 .about__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .stat{background:var(--bg-2);padding:18px 10px;text-align:center}
 .stat__v{display:block;font-family:var(--f-disp);font-weight:700;font-size:32px;color:var(--red-bright);line-height:1}
@@ -470,7 +464,7 @@ body::after{
   border-bottom:1px solid var(--line)}
 @media(max-width:880px){.footer__top{grid-template-columns:1fr;gap:36px}}
 .footer__brand{display:flex;gap:14px;align-items:flex-start}
-.brand__mark--lg{width:46px;height:46px}
+.brand__mark--lg{width:48px;height:48px}
 .footer__name{font-weight:700;font-size:20px;letter-spacing:.24em;color:var(--white)}
 .footer__motto{font-size:10px;color:var(--faint);letter-spacing:.14em;margin-top:6px}
 .footer__cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}

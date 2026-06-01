@@ -16,8 +16,8 @@ The site is built in a dark **red-glow CRT panel aesthetic**
 - Heavy red glowing display type for the wordmark and section titles
   (`Oxanium`), with readable body copy (`Chakra Petch`) and `Share Tech Mono`
   for data labels
-- A single quiet graphic — a static **triple-core diagram** in the About
-  section (built in `js/main.js`, no libraries). No background animations.
+- The official **AΦ logo mark** in the nav, footer and About section, and as
+  the app/dock icon. No background animations.
 
 ## What's on the page
 
@@ -26,7 +26,7 @@ The site is built in a dark **red-glow CRT panel aesthetic**
 | **Hero** | Full-bleed responsive `LOGOSFORGE` wordmark (SVG, spans the viewport at every size), tagline, deploy CTAs, live HUD meta |
 | **Main Features** | Inline AI Assistant · Manuscript Editor · Structure Tools · Story Bible · Graph Visualization · Local/Cloud AI |
 | **Writing Modes** | Five narrative engines — **Screenplay is featured as the priority unit** (market-gap business case), plus Novel, Graphic Novel, Series, Stage Script |
-| **About** | The "narrative OS" manifesto + an animated triple-core critique radar |
+| **About** | The "narrative OS" manifesto + the Logosforge logo |
 | **Pricing** | Free (Whiteboard only · 0€) and Pro license (Complete · 99€) |
 | **Downloads** | Desktop (Windows / macOS / Linux) and Web (PC / iOS / Android PWA) |
 | **Footer** | Discord (community/support), Telegram (updates), social links, credits / copyright / policy |
@@ -41,9 +41,9 @@ Zero build step — hand-authored static HTML / CSS / JS so it deploys anywhere.
 ```
 index.html        # single-page site + inline SVG sprite (logo mark, icons)
 css/style.css     # design system + all sections (responsive, reduced-motion aware)
-js/main.js        # click dropdowns, mobile drawer, nav state, static core diagram
+js/main.js        # click dropdowns, mobile drawer, nav scrolled state
 site.webmanifest  # PWA / dock-icon manifest
-assets/           # dock icon (icon.svg + apple-touch / 192 / 512 PNGs)
+assets/           # logo.webp (original) + logo.png + icon PNGs (512/192/apple-touch)
 reference-ui/     # style reference frames
 ```
 
