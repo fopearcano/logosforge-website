@@ -32,7 +32,7 @@
   --faint:     #6b7186;
   --ghost:     #3a3f52;
 
-  --f-title:'Oxanium','Chakra Petch',system-ui,sans-serif;
+  --f-title:'Special Elite','Courier New',ui-monospace,monospace;
   --f-disp: 'Special Elite','Courier New',ui-monospace,monospace;
   --f-mono: 'Special Elite','Courier New',ui-monospace,monospace;
   --f-head: 'Special Elite','Courier New',ui-monospace,monospace;
@@ -56,6 +56,7 @@ body{
   overflow-x:hidden;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
+  font-synthesis:none;
 }
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
