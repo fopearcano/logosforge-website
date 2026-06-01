@@ -32,10 +32,10 @@
   --faint:     #6b7186;
   --ghost:     #3a3f52;
 
-  --f-head: 'Oxanium','Chakra Petch','Rajdhani',system-ui,sans-serif;
-  --f-disp: 'Chakra Petch','Rajdhani',system-ui,sans-serif;
-  --f-mono: 'Share Tech Mono','JetBrains Mono',ui-monospace,'Courier New',monospace;
-  --f-jp:   'Noto Sans JP',sans-serif;
+  --f-title:'Tektur','Oxanium','Chakra Petch',system-ui,sans-serif;
+  --f-disp: 'Courier Prime','Courier New',ui-monospace,monospace;
+  --f-mono: 'Courier Prime','Courier New',ui-monospace,monospace;
+  --f-head: 'Courier Prime','Courier New',ui-monospace,monospace;
 
   --maxw: 1280px;
   --hud-h: 0px;
@@ -63,9 +63,8 @@ ul{list-style:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ::selection{background:var(--red);color:#fff}
 
-/* angular display face for the wordmark + headings */
-.wordmark text,.brand__name,.sec-head__title,.priority__title,.dl-block__title,
-.price__name,.price__num,.mode__title,.feat__title,.stat__v{font-family:var(--f-head)}
+/* CENTRAL DOGMA-style display face — LOGOSFORGE wordmark + brand name only */
+.wordmark text,.brand__name,.footer__name{font-family:var(--f-title)}
 
 /* fixed background field: pure black + faint red vignette glow */
 body::before{
@@ -239,7 +238,7 @@ body::after{
 .wordmark{width:100%;height:auto;display:block;
   fill:var(--red);
   filter:drop-shadow(0 0 26px rgba(232,18,10,.55)) drop-shadow(0 0 6px rgba(232,18,10,.7))}
-.wordmark text{font-family:var(--f-disp);font-weight:700;font-size:120px}
+.wordmark text{font-family:var(--f-title);font-weight:700;font-size:120px}
 .wordmark-tag{position:absolute;bottom:8px;font-size:10px;letter-spacing:.24em;color:var(--faint)}
 .wordmark-tag--l{left:clamp(10px,2.4vw,46px);font-family:var(--f-jp)!important;color:var(--red-bright)}
 .wordmark-tag--r{right:clamp(10px,2.4vw,46px)}
