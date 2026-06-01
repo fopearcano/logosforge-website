@@ -206,9 +206,9 @@
       // vertical scan sweep
       const sx = ((t * 0.6) % (w + 200)) - 100;
       const g = ctx.createLinearGradient(sx - 60, 0, sx + 60, 0);
-      g.addColorStop(0, 'rgba(225,6,0,0)'); g.addColorStop(0.5, 'rgba(225,6,0,.10)'); g.addColorStop(1, 'rgba(225,6,0,0)');
+      g.addColorStop(0, 'rgba(225,6,0,0)'); g.addColorStop(0.5, 'rgba(225,6,0,.06)'); g.addColorStop(1, 'rgba(225,6,0,0)');
       ctx.fillStyle = g; ctx.fillRect(sx - 60, 0, 120, h);
-      ctx.strokeStyle = 'rgba(255,45,24,.4)'; ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(255,45,24,.28)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(sx, 0); ctx.lineTo(sx, h); ctx.stroke();
 
       t += 1;
