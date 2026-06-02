@@ -27,7 +27,7 @@ The site is built in a dark **red-glow CRT panel aesthetic**
 | **Main Features** | Inline AI Assistant · Manuscript Editor · Structure Tools · Story Bible · Graph Visualization · Local/Cloud AI |
 | **Writing Modes** | Five narrative engines — **Screenplay is featured as the priority unit** (market-gap business case), plus Novel, Graphic Novel, Series, Stage Script |
 | **About** | The "narrative OS" manifesto + the Logosforge logo |
-| **Pricing** | Free (Whiteboard only · 0€) and Pro license (Complete · 99€) |
+| **Pricing** | Free (Whiteboard only · 0€) and Pro license (Complete · 149€) |
 | **Downloads** | Desktop (Windows / macOS / Linux) and Web (PC / iOS / Android PWA) |
 | **Footer** | Discord (community/support), Telegram (updates), social links, credits / copyright / policy |
 
