@@ -33,21 +33,21 @@
 <main class="checkout">
   <article class="checkout__card panel">
     <img class="checkout__logo" src="assets/logo.png" alt="Logosforge" width="84" height="84">
-    <div class="checkout__id mono">TIER 01 · PRO LICENSE</div>
-    <h1 class="checkout__title">LOGOSFORGE PRO</h1>
-    <div class="checkout__price"><span style="color:var(--dim);font-size:22px">€</span><b>149</b><span class="checkout__per mono">/ ONE-TIME</span></div>
+    <div class="checkout__id mono" id="co-id">TIER 01 · PRO LICENSE</div>
+    <h1 class="checkout__title" id="co-name">LOGOSFORGE PRO</h1>
+    <div class="checkout__price"><span style="color:var(--dim);font-size:22px">€</span><b id="co-num">149</b><span class="checkout__per mono" id="co-per">/ ONE-TIME</span></div>
 
     <div class="checkout__status mono"><span class="dot dot--live"></span>SECURE CHECKOUT — BEING CONNECTED</div>
 
-    <p class="checkout__note">
-      The payment &amp; license-activation system is being wired up. It will issue a
-      permanent key that unlocks every engine across desktop, web and PWA. Join the
-      community to get the purchase link the moment it goes live.
+    <p class="checkout__note" id="co-note">
+      A permanent desktop license — every engine and tool, owned outright. The
+      secure checkout is being connected; join the community to get the purchase
+      link the moment it goes live.
     </p>
 
     <div class="checkout__actions">
       <span class="btn btn--solid btn--disabled" aria-disabled="true">
-        <span class="btn__bracket">[</span>PAY 149€ — SOON<span class="btn__bracket">]</span>
+        <span class="btn__bracket">[</span><span id="co-pay">PAY 149€ — SOON</span><span class="btn__bracket">]</span>
       </span>
       <a href="https://discord.gg/CgFXVJkXCW" target="_blank" rel="noopener" class="btn btn--ghost">
         <span class="btn__bracket">[</span>GET NOTIFIED ON DISCORD<span class="btn__bracket">]</span>
@@ -59,5 +59,25 @@
   </article>
 </main>
 <div class="scanlines" aria-hidden="true"></div>
+<script>
+(function(){
+  var plans={
+    pro:{id:'TIER 01 · PRO LICENSE',name:'LOGOSFORGE PRO',num:'149',per:'/ ONE-TIME',
+      note:'A permanent desktop license — every engine and tool, owned outright. The secure checkout is being connected; join the community to get the purchase link the moment it goes live.',
+      pay:'PAY 149€ — SOON'},
+    'wb-cloud':{id:'TIER 00 · WHITEBOARD · CLOUD',name:'WHITEBOARD · CLOUD',num:'10',per:'/ MONTH',
+      note:'The cloud Whiteboard that powers the web app — 10€/month, or 96€/year (save 20%). The subscription checkout is being connected; join the community to get notified at launch.',
+      pay:'SUBSCRIBE 10€/MO — SOON'},
+    'pro-cloud':{id:'TIER 01 · PRO · CLOUD',name:'LOGOSFORGE PRO · CLOUD',num:'49',per:'/ MONTH',
+      note:'The complete Logosforge in the cloud, for the web app — 49€/month, or 468€/year (save 20%). The subscription checkout is being connected; join the community to get notified at launch.',
+      pay:'SUBSCRIBE 49€/MO — SOON'}
+  };
+  var key=new URLSearchParams(location.search).get('plan');
+  var p=plans[key]||plans.pro;
+  var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  set('co-id',p.id);set('co-name',p.name);set('co-num',p.num);set('co-per',p.per);set('co-note',p.note);set('co-pay',p.pay);
+  document.title=p.name+' — LOGOSFORGE';
+})();
+</script>
 </body>
 </html>
