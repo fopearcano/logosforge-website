@@ -53,6 +53,28 @@
     dlg.addEventListener('close', () => document.body.classList.remove('modal-open'));
   });
 
+  /* ---------- pricing billing toggle (one-time / monthly / yearly) ---------- */
+  const bill = $('#bill');
+  if (bill) {
+    const opts = $$('.bill-toggle__opt', bill);
+    const apply = mode => {
+      $$('[data-' + mode + ']').forEach(el => {
+        const v = el.getAttribute('data-' + mode);
+        if (v === null) return;
+        if (el.hasAttribute('data-cta')) {
+          const label = el.querySelector('.btn__label'); if (label) label.textContent = v;
+          const href = el.getAttribute('data-href-' + mode); if (href) el.setAttribute('href', href);
+        } else {
+          el.textContent = v;
+        }
+      });
+    };
+    opts.forEach(o => o.addEventListener('click', () => {
+      opts.forEach(x => x.classList.toggle('is-active', x === o));
+      apply(o.dataset.bill);
+    }));
+  }
+
   /* ---------- newsletter sign-up (client-side stub) ---------- */
   const nl = $('#newsletter');
   if (nl) {

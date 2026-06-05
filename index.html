@@ -374,21 +374,31 @@
         </div>
         <h2 class="sec-head__title">PRICING</h2>
         <p class="sec-head__intro">
-          One forge, two access levels. Start free on the Whiteboard. Unlock the
-          complete system with a single, permanent Pro license.
+          Own it once on the desktop, or subscribe to the cloud for the web app.
+          Whiteboard stays free on desktop; Logosforge Pro unlocks the complete system.
         </p>
       </header>
+
+      <div class="bill" id="bill">
+        <div class="bill-toggle" role="group" aria-label="Billing">
+          <button type="button" class="bill-toggle__opt is-active" data-bill="onetime">One-time</button>
+          <button type="button" class="bill-toggle__opt" data-bill="monthly">Monthly</button>
+          <button type="button" class="bill-toggle__opt" data-bill="yearly">Yearly <span class="bill-save">−20%</span></button>
+        </div>
+        <p class="bill-note mono">Desktop = one-time license · Cloud (web) = subscription</p>
+      </div>
 
       <div class="price-grid">
         <article class="panel price">
           <div class="price__head">
-            <span class="price__id mono">TIER 00 · FREE</span>
+            <span class="price__id mono" data-onetime="TIER 00 · DESKTOP" data-monthly="TIER 00 · CLOUD" data-yearly="TIER 00 · CLOUD">TIER 00 · DESKTOP</span>
             <h3 class="price__name">WHITEBOARD</h3>
           </div>
           <div class="price__amount">
-            <span class="price__cur">€</span><span class="price__num">0</span>
-            <span class="price__per mono">/ FOREVER</span>
+            <span class="price__cur">€</span><span class="price__num" data-onetime="0" data-monthly="10" data-yearly="8">0</span>
+            <span class="price__per mono" data-onetime="/ FOREVER" data-monthly="/ MONTH" data-yearly="/ MONTH">/ FOREVER</span>
           </div>
+          <p class="price__sub mono" data-onetime="DESKTOP · ONE-TIME" data-monthly="CLOUD · BILLED MONTHLY" data-yearly="CLOUD · €96/YR · SAVE 20%">DESKTOP · ONE-TIME</p>
           <p class="price__pitch">A minimal, non-intrusive writing surface for all five modes, with PSYKE Small — a lightweight story bible — always within reach.</p>
           <ul class="price__list mono">
             <li><i class="ok"></i> Minimal, non-intrusive UI</li>
@@ -397,21 +407,24 @@
             <li><i class="ok"></i> PSYKE Small — story bible</li>
             <li><i class="ok"></i> DOCX / Text export</li>
           </ul>
-          <a href="#downloads" class="btn btn--ghost btn--block">
-            <span class="btn__bracket">[</span>START FREE<span class="btn__bracket">]</span>
+          <a class="btn btn--ghost btn--block" data-cta href="#downloads"
+             data-href-onetime="#downloads" data-href-monthly="checkout.html" data-href-yearly="checkout.html"
+             data-onetime="START FREE" data-monthly="SUBSCRIBE — 10€/MO" data-yearly="SUBSCRIBE — 8€/MO">
+            <span class="btn__bracket">[</span><span class="btn__label">START FREE</span><span class="btn__bracket">]</span>
           </a>
         </article>
 
         <article class="panel price price--pro">
           <span class="price__ribbon mono">COMPLETE</span>
           <div class="price__head">
-            <span class="price__id mono">TIER 01 · PRO LICENSE</span>
+            <span class="price__id mono" data-onetime="TIER 01 · PRO LICENSE" data-monthly="TIER 01 · PRO CLOUD" data-yearly="TIER 01 · PRO CLOUD">TIER 01 · PRO LICENSE</span>
             <h3 class="price__name">LOGOSFORGE PRO</h3>
           </div>
           <div class="price__amount">
-            <span class="price__cur">€</span><span class="price__num">149</span>
-            <span class="price__per mono">/ ONE-TIME</span>
+            <span class="price__cur">€</span><span class="price__num" data-onetime="149" data-monthly="49" data-yearly="39">149</span>
+            <span class="price__per mono" data-onetime="/ ONE-TIME" data-monthly="/ MONTH" data-yearly="/ MONTH">/ ONE-TIME</span>
           </div>
+          <p class="price__sub mono" data-onetime="DESKTOP · ONE-TIME LICENSE" data-monthly="CLOUD · BILLED MONTHLY" data-yearly="CLOUD · €468/YR · SAVE 20%">DESKTOP · ONE-TIME LICENSE</p>
           <p class="price__pitch">The complete narrative operating system — planning, structuring and analysis, an advanced AI assistant you can chat with, and PSYKE Big, the full story bible.</p>
           <ul class="price__list mono">
             <li><i class="ok"></i> Everything in Whiteboard</li>
@@ -420,8 +433,10 @@
             <li><i class="ok"></i> Chat with the assistant</li>
             <li><i class="ok"></i> PSYKE Big — full story bible</li>
           </ul>
-          <a href="checkout.html" class="btn btn--solid btn--block">
-            <span class="btn__bracket">[</span>GET PRO — 149€<span class="btn__bracket">]</span>
+          <a class="btn btn--solid btn--block" data-cta href="checkout.html"
+             data-href-onetime="checkout.html" data-href-monthly="checkout.html" data-href-yearly="checkout.html"
+             data-onetime="GET PRO — 149€" data-monthly="SUBSCRIBE — 49€/MO" data-yearly="SUBSCRIBE — 39€/MO">
+            <span class="btn__bracket">[</span><span class="btn__label">GET PRO — 149€</span><span class="btn__bracket">]</span>
           </a>
         </article>
       </div>
@@ -437,70 +452,70 @@
           <span class="sec-head__line"></span>
         </div>
         <h2 class="sec-head__title">DOWNLOADS</h2>
-        <p class="sec-head__intro">Deploy the forge to your platform of choice. Same project, same Story Bible, synced across every surface.</p>
+        <p class="sec-head__intro">Download the native app for Windows, macOS or Linux, or open Logosforge in the browser. Same project across desktop and cloud.</p>
       </header>
 
       <div class="dl-grid">
         <div class="panel dl-block">
           <div class="dl-block__head">
-            <span class="dl-block__k mono">UNIT A</span>
+            <span class="dl-block__k mono">UNIT A · DOWNLOAD</span>
             <h3 class="dl-block__title">DESKTOP</h3>
-            <p class="dl-block__sub mono">NATIVE BUILD · FULL SYSTEM</p>
+            <p class="dl-block__sub mono">NATIVE APP · WIN / MAC / LINUX</p>
           </div>
-          <div class="dl-row-set">
-            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-win"/></svg></span>
-              <span class="dl-row__name">Windows</span>
-              <span class="dl-row__meta mono">.EXE · x64</span>
-              <span class="dl-row__go mono">DOWNLOAD →</span>
-            </a>
-            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-mac"/></svg></span>
-              <span class="dl-row__name">macOS</span>
-              <span class="dl-row__meta mono">.DMG · universal</span>
-              <span class="dl-row__go mono">DOWNLOAD →</span>
-            </a>
-            <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-linux"/></svg></span>
-              <span class="dl-row__name">Linux</span>
-              <span class="dl-row__meta mono">.AppImage · .deb</span>
-              <span class="dl-row__go mono">DOWNLOAD →</span>
-            </a>
+          <div class="dl-prod-set">
+            <div class="dl-prod">
+              <div class="dl-prod__head">
+                <span class="dl-prod__name">Whiteboard</span>
+                <span class="dl-prod__tier mono">FREE</span>
+              </div>
+              <div class="dl-prod__os">
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="Windows" aria-label="Whiteboard for Windows"><svg viewBox="0 0 24 24"><use href="#os-win"/></svg></a>
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="macOS" aria-label="Whiteboard for macOS"><svg viewBox="0 0 24 24"><use href="#os-mac"/></svg></a>
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="Linux" aria-label="Whiteboard for Linux"><svg viewBox="0 0 24 24"><use href="#os-linux"/></svg></a>
+              </div>
+            </div>
+            <div class="dl-prod">
+              <div class="dl-prod__head">
+                <span class="dl-prod__name">Logosforge Pro</span>
+                <span class="dl-prod__tier mono dl-prod__tier--pro">PRO</span>
+              </div>
+              <div class="dl-prod__os">
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="Windows" aria-label="Logosforge Pro for Windows"><svg viewBox="0 0 24 24"><use href="#os-win"/></svg></a>
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="macOS" aria-label="Logosforge Pro for macOS"><svg viewBox="0 0 24 24"><use href="#os-mac"/></svg></a>
+                <a href="https://github.com/fopearcano/storyplanner/releases" target="_blank" rel="noopener" class="dl-os" title="Linux" aria-label="Logosforge Pro for Linux"><svg viewBox="0 0 24 24"><use href="#os-linux"/></svg></a>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="panel dl-block">
           <div class="dl-block__head">
-            <span class="dl-block__k mono">UNIT B</span>
-            <h3 class="dl-block__title">WEB</h3>
-            <p class="dl-block__sub mono">PWA · NOTHING TO INSTALL</p>
+            <span class="dl-block__k mono">UNIT B · CLOUD</span>
+            <h3 class="dl-block__title">WEB ACCESS</h3>
+            <p class="dl-block__sub mono">SUBSCRIPTION · NOTHING TO INSTALL</p>
           </div>
-          <div class="dl-row-set">
-            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-web"/></svg></span>
-              <span class="dl-row__name">PC Browser</span>
-              <span class="dl-row__meta mono">CHROME · EDGE · FIREFOX</span>
-              <span class="dl-row__go mono">LAUNCH →</span>
-            </a>
-            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-ios"/></svg></span>
-              <span class="dl-row__name">iOS</span>
-              <span class="dl-row__meta mono">ADD TO HOME SCREEN</span>
-              <span class="dl-row__go mono">INSTALL →</span>
-            </a>
-            <a href="https://github.com/fopearcano/storyplanner" target="_blank" rel="noopener" class="dl-row">
-              <span class="dl-row__os" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#os-android"/></svg></span>
-              <span class="dl-row__name">Android</span>
-              <span class="dl-row__meta mono">PWA · PLAY (SOON)</span>
-              <span class="dl-row__go mono">INSTALL →</span>
-            </a>
+          <div class="dl-prod-set">
+            <div class="dl-prod">
+              <div class="dl-prod__head">
+                <span class="dl-prod__name">Whiteboard</span>
+                <span class="dl-prod__tier mono">CLOUD</span>
+              </div>
+              <a href="checkout.html" class="dl-prod__launch mono">LAUNCH WEB →</a>
+            </div>
+            <div class="dl-prod">
+              <div class="dl-prod__head">
+                <span class="dl-prod__name">Logosforge Pro</span>
+                <span class="dl-prod__tier mono dl-prod__tier--pro">CLOUD</span>
+              </div>
+              <a href="checkout.html" class="dl-prod__launch mono">LAUNCH WEB →</a>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="dl-note mono">
         <span class="dot dot--live"></span>
-        FREE WHITEBOARD INCLUDED ON EVERY BUILD · PRO LICENSE UNLOCKS THE COMPLETE SYSTEM
+        DESKTOP = ONE-TIME LICENSE · WEB = CLOUD SUBSCRIPTION · SAME PROJECT EVERYWHERE
       </div>
     </div>
   </section>
