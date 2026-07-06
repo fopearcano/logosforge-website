@@ -40,6 +40,8 @@ Zero build step — hand-authored static HTML / CSS / JS so it deploys anywhere.
 
 ```
 index.html        # single-page site + inline SVG sprite (logo mark, icons)
+screenshots.html  # Screenshots gallery (Whiteboard + Pro Studio) with lightbox
+checkout.html     # plan-aware payment/licensing placeholder (?plan=)
 css/style.css     # design system + all sections (responsive, reduced-motion aware)
 js/main.js        # click dropdowns, mobile drawer, nav scrolled state
 site.webmanifest  # PWA / dock-icon manifest

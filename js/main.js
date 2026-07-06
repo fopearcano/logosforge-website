@@ -53,6 +53,18 @@
     dlg.addEventListener('close', () => document.body.classList.remove('modal-open'));
   });
 
+  /* ---------- screenshot lightbox (uses the shared .modal handlers above) ---------- */
+  const lightbox = $('#lightbox');
+  if (lightbox) {
+    const lbImg = $('#lightbox-img');
+    $$('[data-shot]').forEach(btn => btn.addEventListener('click', () => {
+      if (lbImg) lbImg.setAttribute('src', btn.dataset.shot);
+      if (lightbox.showModal) { lightbox.showModal(); document.body.classList.add('modal-open'); }
+    }));
+    lbImg?.addEventListener('click', () => lightbox.close());
+    lightbox.addEventListener('close', () => { if (lbImg) lbImg.setAttribute('src', ''); });
+  }
+
   /* ---------- pricing billing toggle (one-time / monthly / yearly) ---------- */
   const bill = $('#bill');
   if (bill) {
