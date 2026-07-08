@@ -65,12 +65,12 @@
     pro:{id:'TIER 01 · PRO · DESKTOP',name:'LOGOSFORGE PRO',num:'59',per:'/ ONE-TIME',
       note:'A one-time desktop license — own it outright, updates within your major version free, 14-day trial, bring your own AI and keep your data. The secure checkout is being connected; join the community to get the purchase link the moment it goes live.',
       pay:'GET PRO 59€ — SOON'},
-    'wb-cloud':{id:'TIER 00 · WHITEBOARD · WEB',name:'WHITEBOARD · WEB',num:'0',per:'/ FREE',
-      note:'Whiteboard in the browser is free, with cloud sync — nothing to pay. Web accounts are being connected; join the community to get notified the moment it goes live.',
-      pay:'GET WHITEBOARD WEB — SOON'},
-    'pro-cloud':{id:'TIER 01 · PRO · WEB',name:'LOGOSFORGE PRO · WEB',num:'4',per:'/ MONTH',
-      note:'Cloud sync for the web app — €4/month or €40/year (2 months free), or +€20/year if you already own Pro Desktop. Bring your own AI key. The subscription checkout is being connected; join the community to get notified at launch.',
-      pay:'ADD WEB SYNC 4€/MO — SOON'}
+    'wb-cloud':{id:'TIER 00 · WHITEBOARD · WEB',name:'WHITEBOARD · WEB',num:'—',per:'PHASE 2',
+      note:'The web version of Whiteboard is planned for a later phase (Phase 2) — not available at launch. Join the community to get notified when web access goes live.',
+      pay:'PHASE 2 — COMING LATER'},
+    'pro-cloud':{id:'TIER 01 · PRO · WEB',name:'LOGOSFORGE PRO · WEB',num:'—',per:'PHASE 2',
+      note:'The web app with cloud sync is planned for a later phase (Phase 2) — not available at launch. Logosforge launches on the desktop; join the community to get notified when web access goes live.',
+      pay:'PHASE 2 — COMING LATER'}
   };
   var key=new URLSearchParams(location.search).get('plan');
   var p=plans[key]||plans.pro;
