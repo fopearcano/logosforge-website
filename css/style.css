@@ -708,3 +708,10 @@ body.modal-open{overflow:hidden}
 .lightbox .modal__close{top:8px;right:8px;background:var(--red);color:#fff;border-color:var(--red);z-index:4}
 .lightbox .modal__close:hover{background:var(--red-bright)}
 @media(max-width:560px){.shot__frame{padding:7px}.shot__zoom{top:14px;right:14px}}
+
+/* pricing toggle — keep it on one row on small phones */
+@media(max-width:480px){
+  .bill-toggle{width:100%;max-width:360px}
+  .bill-toggle__opt{flex:1;justify-content:center;padding:10px 6px;font-size:11px;letter-spacing:.04em;gap:5px}
+  .bill-save{font-size:8px}
+}

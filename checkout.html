@@ -33,21 +33,21 @@
 <main class="checkout">
   <article class="checkout__card panel">
     <img class="checkout__logo" src="assets/logo.png" alt="Logosforge" width="84" height="84">
-    <div class="checkout__id mono" id="co-id">TIER 01 · PRO LICENSE</div>
+    <div class="checkout__id mono" id="co-id">TIER 01 · PRO · DESKTOP</div>
     <h1 class="checkout__title" id="co-name">LOGOSFORGE PRO</h1>
-    <div class="checkout__price"><span style="color:var(--dim);font-size:22px">€</span><b id="co-num">149</b><span class="checkout__per mono" id="co-per">/ ONE-TIME</span></div>
+    <div class="checkout__price"><span style="color:var(--dim);font-size:22px">€</span><b id="co-num">59</b><span class="checkout__per mono" id="co-per">/ ONE-TIME</span></div>
 
     <div class="checkout__status mono"><span class="dot dot--live"></span>SECURE CHECKOUT — BEING CONNECTED</div>
 
     <p class="checkout__note" id="co-note">
-      A permanent desktop license — every engine and tool, owned outright. The
-      secure checkout is being connected; join the community to get the purchase
-      link the moment it goes live.
+      A one-time desktop license — own it outright, updates within your major version
+      free, 14-day trial, bring your own AI and keep your data. The secure checkout is
+      being connected; join the community to get the purchase link the moment it goes live.
     </p>
 
     <div class="checkout__actions">
       <span class="btn btn--solid btn--disabled" aria-disabled="true">
-        <span class="btn__bracket">[</span><span id="co-pay">PAY 149€ — SOON</span><span class="btn__bracket">]</span>
+        <span class="btn__bracket">[</span><span id="co-pay">GET PRO 59€ — SOON</span><span class="btn__bracket">]</span>
       </span>
       <a href="https://discord.gg/CgFXVJkXCW" target="_blank" rel="noopener" class="btn btn--ghost">
         <span class="btn__bracket">[</span>GET NOTIFIED ON DISCORD<span class="btn__bracket">]</span>
@@ -62,15 +62,15 @@
 <script>
 (function(){
   var plans={
-    pro:{id:'TIER 01 · PRO LICENSE',name:'LOGOSFORGE PRO',num:'149',per:'/ ONE-TIME',
-      note:'A permanent desktop license — every engine and tool, owned outright. The secure checkout is being connected; join the community to get the purchase link the moment it goes live.',
-      pay:'PAY 149€ — SOON'},
-    'wb-cloud':{id:'TIER 00 · WHITEBOARD · CLOUD',name:'WHITEBOARD · CLOUD',num:'10',per:'/ MONTH',
-      note:'The cloud Whiteboard that powers the web app — 10€/month, or 96€/year (save 20%). The subscription checkout is being connected; join the community to get notified at launch.',
-      pay:'SUBSCRIBE 10€/MO — SOON'},
-    'pro-cloud':{id:'TIER 01 · PRO · CLOUD',name:'LOGOSFORGE PRO · CLOUD',num:'49',per:'/ MONTH',
-      note:'The complete Logosforge in the cloud, for the web app — 49€/month, or 468€/year (save 20%). The subscription checkout is being connected; join the community to get notified at launch.',
-      pay:'SUBSCRIBE 49€/MO — SOON'}
+    pro:{id:'TIER 01 · PRO · DESKTOP',name:'LOGOSFORGE PRO',num:'59',per:'/ ONE-TIME',
+      note:'A one-time desktop license — own it outright, updates within your major version free, 14-day trial, bring your own AI and keep your data. The secure checkout is being connected; join the community to get the purchase link the moment it goes live.',
+      pay:'GET PRO 59€ — SOON'},
+    'wb-cloud':{id:'TIER 00 · WHITEBOARD · WEB',name:'WHITEBOARD · WEB',num:'0',per:'/ FREE',
+      note:'Whiteboard in the browser is free, with cloud sync — nothing to pay. Web accounts are being connected; join the community to get notified the moment it goes live.',
+      pay:'GET WHITEBOARD WEB — SOON'},
+    'pro-cloud':{id:'TIER 01 · PRO · WEB',name:'LOGOSFORGE PRO · WEB',num:'4',per:'/ MONTH',
+      note:'Cloud sync for the web app — €4/month or €40/year (2 months free), or +€20/year if you already own Pro Desktop. Bring your own AI key. The subscription checkout is being connected; join the community to get notified at launch.',
+      pay:'ADD WEB SYNC 4€/MO — SOON'}
   };
   var key=new URLSearchParams(location.search).get('plan');
   var p=plans[key]||plans.pro;
